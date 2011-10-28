@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Directory</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-inner">
+	<div class="container">
+		<h3><a>Directory</a></h3>
+		<ul class="nav secondary-nav">
+			
+			<li class="dropdown">
+				<% if user_signed_in? %>
+				<a class="dropdown-toggle">signed in as <%= current_user.username %></a>
+				<ul class="dropdown-menu">
+					<%= link_to 'sign out', destroy_user_session_path, :method => :delete %>
+				</ul>
+				<% end %>
+			</li>
+			
+		</ul>
+	</div>
+  </div>
+</div>
+<div class="container" id="content">
+<div class="span12">
+  <%= yield %>
+</div>
+
+<div class='span3' id='sidebar'>
+<ul>
+	<li><%= link_to 'request', requests_path %></li>
+	<li><%= link_to 'new request', new_request_path, :class =>"btn primary" %></li>
+</ul>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<h1>All requests</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>User</th>
+    <th>Request date</th>
+    <th>Completed</th>
+    <th>Completed date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @requests.each do |request| %>
+  <tr>
+    <td><%= request.name %></td>
+    <td><%= request.description %></td>
+    <td><%= request.user.username %></td>
+    <td><%= request.request_date %></td>
+    <td><%= request.completed %></td>
+    <td><%= request.completed_date %></td>
+    <td><%= link_to 'Show', request %></td>
+    <td><%= link_to 'Edit', edit_request_path(request) %></td>
+    
+    <td><%= link_to 'Destroy', request, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Request', new_request_path %>
