@@ -4,7 +4,15 @@ class RequestsController < ApplicationController
   
   before_filter :authenticate_user!
   def index
-    @requests = Request.all
+	if params[:type] == "mine"
+		@requests = Request.find(:all, :conditions => ["user_id = ?", current_user.id])
+    elsif params[:type] == "completed"
+		@requests = Request.find(:all, :conditions => ["completed = ?", true])
+    elsif params[:type] == "outstanding"
+		@requests = Request.find(:all, :conditions => ["completed = ?", false])
+    else
+		@requests = Request.all
+	end
 
     respond_to do |format|
       format.html # index.html.erb
