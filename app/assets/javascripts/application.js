@@ -10,7 +10,7 @@
 
 jQuery(document).ready(function(){
 	$('.topbar').dropdown()
-	
+	$('.tablesorter').tablesorter({sortList: [[2,0]]})
 	
 	
 });

@@ -10,8 +10,27 @@
 	padding-top:60px;
 }
 
+.actions{
+	border:thin solid #ddd;
+	border-radius:4px;
+}
+
 #sidebar{
-	padding:10px;
-	min-height:300px;
+	margin-top:55px;
+	padding:0 10px;
+	min-height:200px;
 	background-color:#eee;
+	border-radius: 4px;
+}
+
+#sidebar ul{
+	list-style:none;
+}
+
+#sidebar ul li{
+	padding-bottom:10px;
+}
+
+a:hover{
+	background-color:none;
 }

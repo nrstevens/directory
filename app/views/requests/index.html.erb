@@ -1,10 +1,10 @@
 <h1>All requests</h1>
 
-<table>
+<table class="tablesorter zebra-striped">
+  <thead>
   <tr>
     <th>Name</th>
-    <th>Description</th>
-    <th>User</th>
+    <th>Requester</th>
     <th>Request date</th>
     <th>Completed</th>
     <th>Completed date</th>
@@ -12,23 +12,18 @@
     <th></th>
     <th></th>
   </tr>
-
+  </thead>
 <% @requests.each do |request| %>
   <tr>
     <td><%= request.name %></td>
-    <td><%= request.description %></td>
     <td><%= request.user.username %></td>
-    <td><%= request.request_date %></td>
+    <td><%= request.request_date.strftime('%d/%m/%Y') %></td>
     <td><%= request.completed %></td>
-    <td><%= request.completed_date %></td>
-    <td><%= link_to 'Show', request %></td>
-    <td><%= link_to 'Edit', edit_request_path(request) %></td>
+    <td><%= request.completed_date.strftime('%d/%m/%Y') if request.completed_date %></td>
+    <td><%= link_to image_tag("show16.png", :border=>0), request %></td>
+    <td><%= link_to image_tag("edit16.png", :border=>0), edit_request_path(request) %></td>
     
-    <td><%= link_to 'Destroy', request, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to image_tag("delete16.png", :border=>0), request, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Request', new_request_path %>
