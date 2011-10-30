@@ -30,17 +30,18 @@
 <div class="span12">
   <%= yield %>
 </div>
-
+<% if user_signed_in? %>
 <div class='span3' id='sidebar'>
 	<h4>Tasks</h4>
 <ul>
 	<li><%= link_to 'All requests', requests_path %></li>
 	<li><%= link_to 'My requests', requests_path(:type => "mine") %></li>
 	<li><%= link_to 'Completed requests', requests_path(:type => "completed") %></li>
-	<li><%= link_to 'Outstanding requests', requests_path(:type => "outstanding") %></li>
+	<li><%= link_to 'Outstanding requests', requests_path(:type => "incomplete") %></li>
 	<li><%= link_to 'New request', new_request_path, :class => "btn success"%></li>
 </ul>
 </div>
+<% end %>
 </div>
 </body>
 </html>

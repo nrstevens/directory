@@ -8,8 +8,8 @@ class RequestsController < ApplicationController
 		@requests = Request.find(:all, :conditions => ["user_id = ?", current_user.id])
     elsif params[:type] == "completed"
 		@requests = Request.find(:all, :conditions => ["completed = ?", true])
-    elsif params[:type] == "outstanding"
-		@requests = Request.find(:all, :conditions => ["completed = ?", true])
+    elsif params[:type] == "incomplete"
+		@requests = Request.find(:all, :conditions => ["completed = ?", false])
     else
 		@requests = Request.all
 	end
@@ -54,6 +54,7 @@ class RequestsController < ApplicationController
     @request = Request.new(params[:request])
     @request.user = @user
     @request.request_date = Date.today
+    @request.completed = false
     respond_to do |format|
       if @request.save
         format.html { redirect_to requests_url, notice: 'Request was successfully created.' }
