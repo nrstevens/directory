@@ -9,7 +9,7 @@ class RequestsController < ApplicationController
     elsif params[:type] == "completed"
 		@requests = Request.find(:all, :conditions => ["completed = ?", true])
     elsif params[:type] == "outstanding"
-		@requests = Request.find(:all, :conditions => ["completed = ?", false])
+		@requests = Request.find(:all, :conditions => ["completed = ?", true])
     else
 		@requests = Request.all
 	end
